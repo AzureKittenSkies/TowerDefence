@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        int potato;
     }
 
     // Update is called once per frame

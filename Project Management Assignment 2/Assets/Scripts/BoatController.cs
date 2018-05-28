@@ -14,7 +14,7 @@ namespace TowerDefense
         void Start()
         {
             gameManager = GameObject.Find("GameManager");
-            gameScore = gameManager.GetComponent<GameManager>();          
+           // gameScore = gameManager.GetComponent<GameManager>();          
         }
 
         void OnTriggerEnter(Collider other)

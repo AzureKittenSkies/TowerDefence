@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyClass
+public class TowerClass
 {
 
     #region Private Variables
@@ -10,10 +10,10 @@ public class EnemyClass
     private int _health;
     private int _speed;
     private int _damage;
-    private EnemyType _type;
+    private string _projectile;
 
     #endregion
-    
+
     public int ID
     {
         get { return _idNum; }
@@ -43,12 +43,5 @@ public class EnemyClass
         get { return _damage; }
         set { _damage = value; }
     }
-    
-}
 
-public enum EnemyType
-{
-    Raft,
-    Rowboat,
-    Ship
 }

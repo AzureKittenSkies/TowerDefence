@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cdf8f3fffae153148bbd5ec6d973827b
-timeCreated: 1527220307
+guid: cb415c28b97fc66488c560fc05d9532c
+timeCreated: 1528433943
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: tower
+    4300000: cannon_tower
   materials:
     importMaterials: 1
     materialName: 0

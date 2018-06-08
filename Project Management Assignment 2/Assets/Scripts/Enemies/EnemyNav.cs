@@ -117,7 +117,7 @@ namespace TowerDefence
             if (other.CompareTag("Checkpoint"))
             {
                 Debug.Log("It was a checkpoint");
-                if (checkpoint.Length != checkpointIndex + 1)
+                if (checkpoint.Length >= checkpointIndex + 1)
                 {
                     checkpointIndex++;
                     

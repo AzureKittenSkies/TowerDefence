@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
-namespace TowerDefense
+namespace TowerDefence
 {
     public class Goal : MonoBehaviour
     {
@@ -15,7 +16,7 @@ namespace TowerDefense
         // Use this for initialization
         void Start()
         {
-            scrW = 16;
+            scrW = 16; //setting up a 16 * 9 grid over the screen to use for setting up GUI elements
             scrH = 9;
         }
 
@@ -24,17 +25,18 @@ namespace TowerDefense
         {
             if (Screen.width / 16 != scrW || Screen.height / 9 != scrH)
             {
-                scrW = Screen.width / 16;
+                scrW = Screen.width / 16; //if the screen is not set to 16 * 9. set the screen to 16 * 9
                 scrH = Screen.height / 9;
             }
 
         }
 
-        void OnColliderEnter(Collider other)
+        void OnTriggerEnter(Collider other)
         {
             // if the other collider has a tag of "enemy"
-            if (other.CompareTag("Enemy"))
+            if (other.gameObject.tag == "Enemy")
             {
+                Debug.Log("Hit");
                 // subtract health
                 Lives--;
                 // destroy object
@@ -46,9 +48,7 @@ namespace TowerDefense
 
         void OnGUI()
         {
-            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
-            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
-            GUI.Box(new Rect(0 * scrW, 0 * scrH, 2f * scrW, 0.5f * scrH), "Lives left: " + Lives);
+            GUI.Box(new Rect(0 * scrW, 0 * scrH, 2f * scrW, 0.5f * scrH), "Lives left: " + Lives); //basic UI for life counter
         }
     }
 }

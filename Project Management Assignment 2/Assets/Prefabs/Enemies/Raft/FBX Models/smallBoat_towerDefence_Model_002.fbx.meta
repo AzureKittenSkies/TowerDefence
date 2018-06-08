@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a6124a43a03b19546956782a25b737fa
-timeCreated: 1527221599
+guid: f12f7d6f54be1de4b821732ab5b5de68
+timeCreated: 1527479774
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: arrow_cluster
+    4300000: pCylinder4
   materials:
     importMaterials: 1
     materialName: 0

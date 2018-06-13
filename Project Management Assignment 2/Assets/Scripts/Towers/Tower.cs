@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 
-public class TowerClass
+public class Tower
 {
 
     #region Private Variables
 
     private int _idNum;
     private string _name;
-    private int _health;
+    private int _cost;
     private int _speed;
     private int _damage;
-    private string _projectile;
+    private GameObject _projectile;
+    private Texture2D _icon;
+    private float _range;
 
     #endregion
 
@@ -26,10 +28,10 @@ public class TowerClass
         set { _name = value; }
     }
 
-    public int Health
+    public int Cost
     {
-        get { return _health; }
-        set { _health = value; }
+        get { return _cost; }
+        set { _cost = value; }
     }
 
     public int Speed
@@ -42,6 +44,24 @@ public class TowerClass
     {
         get { return _damage; }
         set { _damage = value; }
+    }
+
+    public Texture2D Icon
+    {
+        get { return _icon; }
+        set { _icon = value; }
+    }
+
+    public GameObject Projectile
+    {
+        get { return _projectile;}
+        set { _projectile = value; }
+    }
+
+    public float Range
+    {
+        get { return _range; }
+        set { _range = value; }
     }
 
 }

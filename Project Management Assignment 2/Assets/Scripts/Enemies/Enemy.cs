@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyClass
+public class Enemy
 {
 
     #region Private Variables

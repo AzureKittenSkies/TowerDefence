@@ -43,9 +43,18 @@ public class GameManager : MonoBehaviour
         GUI.Box(new Rect(0, 0, 5.5f * scrW, 2.75f * scrH), "Temp tower Selection window");
 
         // Tower selection window
-        GUI.Box(new Rect(0.1f * scrW, 0, 1.6f * scrW, 1.6f * scrH), "Spear Tower");
-        GUI.Box(new Rect(1.95f * scrW, 0, 1.6f * scrW, 1.6f * scrH), "Archer Tower");
-        GUI.Box(new Rect(3.8f * scrW, 0, 1.6f * scrW, 1.6f * scrH), "Cannon Tower");
+        if(GUI.Button(new Rect(0.1f * scrW, 0, 1.6f * scrW, 1.6f * scrH), "Spear Tower"))
+        {
+
+        }
+        if(GUI.Button(new Rect(1.95f * scrW, 0, 1.6f * scrW, 1.6f * scrH), "Archer Tower"))
+        {
+
+        }
+        if(GUI.Button(new Rect(3.8f * scrW, 0, 1.6f * scrW, 1.6f * scrH), "Cannon Tower"))
+        {
+
+        }
 
         // Tower info boxes
         GUI.Box(new Rect(0.1f * scrW, 1.6f * scrH, 1.6f * scrW, 1.05f * scrH), "Cost; " + towerList[0].Cost + "\nDamage; " + towerList[0].Damage+ "\nRange; " + towerList[0].Range);

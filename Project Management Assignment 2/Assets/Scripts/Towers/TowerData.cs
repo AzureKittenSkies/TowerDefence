@@ -2,12 +2,12 @@
 
 public static class TowerData
 {
-    public static Tower CreateTower(int towerId)
+    public static TowerClass CreateTower(int towerId)
     {
-        Tower tower = new Tower();
+        TowerClass tower = new TowerClass();
         string name = "";
         int cost = 0;
-        int speed = 0;
+        float speed = 0f;
         int damage = 0;
         string projectile = "";
         string icon = "";

@@ -1,67 +1,37 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Tower
+public class Tower : MonoBehaviour
 {
+    #region Variables
 
-    #region Private Variables
+    public TowerClass towerClass;
+    public int cost;
+    public float speed;
+    public int damage;
+    public float range;
+    public GameObject projectile;
+    public Texture2D icon;
 
-    private int _idNum;
-    private string _name;
-    private int _cost;
-    private int _speed;
-    private int _damage;
-    private GameObject _projectile;
-    private Texture2D _icon;
-    private float _range;
+    private float attackTimer = 0;
+
 
     #endregion
 
-    public int ID
+
+
+    // Use this for initialization
+    void Start()
     {
-        get { return _idNum; }
-        set { _idNum = value; }
+        // get the tower type from the 
     }
 
-    public string Name
+    // Update is called once per frame
+    void Update()
     {
-        get { return _name; }
-        set { _name = value; }
+
     }
 
-    public int Cost
-    {
-        get { return _cost; }
-        set { _cost = value; }
-    }
-
-    public int Speed
-    {
-        get { return _speed; }
-        set { _speed = value; }
-    }
-
-    public int Damage
-    {
-        get { return _damage; }
-        set { _damage = value; }
-    }
-
-    public Texture2D Icon
-    {
-        get { return _icon; }
-        set { _icon = value; }
-    }
-
-    public GameObject Projectile
-    {
-        get { return _projectile;}
-        set { _projectile = value; }
-    }
-
-    public float Range
-    {
-        get { return _range; }
-        set { _range = value; }
-    }
 
 }

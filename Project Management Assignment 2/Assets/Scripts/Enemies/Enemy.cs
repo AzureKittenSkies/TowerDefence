@@ -1,54 +1,64 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Enemy
+public class Enemy : MonoBehaviour
 {
 
-    #region Private Variables
+    #region Variables
 
-    private int _idNum;
-    private string _name;
-    private int _health;
-    private int _speed;
-    private int _damage;
-    private EnemyType _type;
+    public EnemyClass enemyClass;
+    public float health;
+    public float speed;
+    public int damage;
+    public EnemyType type;
+    public bool endTrigger = false;
+    public GameManager gameManager;
 
     #endregion
-    
-    public int ID
+
+    // Use this for initialization
+    void Start()
     {
-        get { return _idNum; }
-        set { _idNum = value; }
+        gameManager = GameObject.Find("Main Camera").GetComponentInChildren<GameManager>();        
+        if (this.name == "Raft")
+        {
+            enemyClass = EnemyData.CreateEnemy(0);
+        }
+        if (this.name == "Rowboat")
+        {
+            enemyClass = EnemyData.CreateEnemy(1);
+        }
+        if (this.name == "Ship")
+        {
+            enemyClass = EnemyData.CreateEnemy(2);
+        }
+        Debug.Log("I am a " + this.name);
+        health = enemyClass.Health;
+
     }
 
-    public string Name
+    void LateUpdate()
     {
-        get { return _name; }
-        set { _name = value; }
+        if (health <= 0  || endTrigger)
+        {
+            Destroy(this.gameObject);
+        }
+
+        
     }
 
-    public int Health
+    void OnTriggerEnter(Collider other)
     {
-        get { return _health; }
-        set { _health = value; }
-    }
+        if (other.CompareTag("Projectile"))
+        {
+            health--;
+        }
+        if (other.CompareTag("Goal"))
+        {
+            gameManager.Attack(enemyClass);
+            endTrigger = true;
 
-    public int Speed
-    {
-        get { return _speed; }
-        set { _speed = value; }
+        }
     }
-
-    public int Damage
-    {
-        get { return _damage; }
-        set { _damage = value; }
-    }
-    
-}
-
-public enum EnemyType
-{
-    Raft,
-    Rowboat,
-    Ship
 }

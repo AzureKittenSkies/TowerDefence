@@ -8,11 +8,15 @@ public class GameManager : MonoBehaviour
 
     #region Variables
     [Header("Variables")]
-    public int lives = 20;
-    public int money;
+    public int lives = 50;
+    private int money;
+    public bool spearSelected, archerSelected, cannonSelected;
+
+
+
     #endregion
 
-    public List<Tower> towerList = new List<Tower>();
+    public List<TowerClass> towerList = new List<TowerClass>();
 
 
     #region GUIStyles
@@ -34,6 +38,17 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    public void Attack(EnemyClass damageData)
+    {
+        lives -= damageData.Damage;
+    }
+
+    public void Update()
+    {
+
+    }
+
     private void OnGUI()
     {
         float scrW = Screen.width / 16;
@@ -45,15 +60,15 @@ public class GameManager : MonoBehaviour
         // Tower selection window
         if(GUI.Button(new Rect(0.1f * scrW, 0, 1.6f * scrW, 1.6f * scrH), "Spear Tower"))
         {
-
+            spearSelected = true;
         }
         if(GUI.Button(new Rect(1.95f * scrW, 0, 1.6f * scrW, 1.6f * scrH), "Archer Tower"))
         {
-
+            archerSelected = true;
         }
         if(GUI.Button(new Rect(3.8f * scrW, 0, 1.6f * scrW, 1.6f * scrH), "Cannon Tower"))
         {
-
+            cannonSelected = true;
         }
 
         // Tower info boxes

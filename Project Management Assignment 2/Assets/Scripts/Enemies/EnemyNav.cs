@@ -93,20 +93,31 @@ namespace TowerDefence
 
 
         #region Waypoint Navigation
-
+            
         void Start()
         {
             rigid = GetComponent<Rigidbody>();
             transform.LookAt(checkpoint[0]);
+            for (int i = 0; i < checkpoint.Length; i++)
+            {
+                checkpoint[i] = GameObject.Find("Checkpoint " + i).transform;
+            }
         }
 
         void Update()
         {
             rigid.velocity = transform.forward * speed;
 
-            var targetRotation = Quaternion.LookRotation(checkpoint[checkpointIndex].transform.position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
+            if (checkpoint.Length >= checkpointIndex + 1)
+            {
+                var targetRotation = Quaternion.LookRotation(checkpoint[checkpointIndex].transform.position - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+            else
+            {
+                var targetRotationEnd = Quaternion.LookRotation(GameObject.Find("End").transform.position - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotationEnd, rotationSpeed * Time.deltaTime);
+            }
 
 
         }
@@ -132,7 +143,7 @@ namespace TowerDefence
             }
         }
 
-
+        
 
 
 

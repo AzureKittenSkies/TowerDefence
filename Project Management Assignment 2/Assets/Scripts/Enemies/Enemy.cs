@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     public bool endTrigger = false;
     public GameManager gameManager;
 
+    public Tower t;
+
     #endregion
 
     // Use this for initialization
@@ -50,15 +52,19 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Projectile"))
-        {
-            health--;
-        }
         if (other.CompareTag("Goal"))
         {
             gameManager.Attack(enemyClass);
             endTrigger = true;
+        }
 
+        if (other.CompareTag("Projectile"))
+        {
+            t = other.transform.parent.GetComponent<Tower>();
+            health -= t.DealDamage();
         }
     }
+
+
+
 }

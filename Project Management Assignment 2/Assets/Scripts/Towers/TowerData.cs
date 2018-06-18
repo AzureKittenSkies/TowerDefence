@@ -8,39 +8,43 @@ public static class TowerData
         string name = "";
         int cost = 0;
         float speed = 0f;
-        int damage = 0;
+        float damage = 0;
         string projectile = "";
         string icon = "";
         float range = 0;
+        float projectileHeightOffset = 0;
 
         switch (towerId)
         {
             case 0:
                 name = "Spear Tower";
-                cost = 15;
+                cost = 10;
                 speed = 5;
-                damage = 10;
+                damage = 7.5f;
                 projectile = "Spears";
                 icon = "Spear Tower";
-                range = 1;
+                range = 1.5f;
+                projectileHeightOffset = -0.039f;
                 break;
             case 1:
                 name = "Arrow Tower";
-                cost = 20;
-                speed = 2;
+                cost = 15;
+                speed = 3;
                 damage = 10;
                 projectile = "Arrow Cluster";
                 icon = "Arrow Tower";
-                range = 1.5f;
+                range = 2.5f;
+                projectileHeightOffset = 0.495f;
                 break;
             case 2:
                 name = "Cannon Tower";
-                cost = 20;
-                speed = 2;
-                damage = 10;
+                cost = 25;
+                speed = 1;
+                damage = 20;
                 projectile = "Cannon Ball";
                 icon = "Cannon Tower";
-                range = 2.5f;
+                range = 3.5f;
+                projectileHeightOffset = 0.186f;
                 break;
 
         }

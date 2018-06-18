@@ -9,10 +9,11 @@ public class TowerClass
     private string _name;
     private int _cost;
     private float _speed;
-    private int _damage;
+    private float _damage;
     private GameObject _projectile;
     private Texture2D _icon;
     private float _range;
+    private float _projectileHeightOffset;
 
     #endregion
 
@@ -40,7 +41,7 @@ public class TowerClass
         set { _speed = value; }
     }
 
-    public int Damage
+    public float Damage
     {
         get { return _damage; }
         set { _damage = value; }
@@ -62,6 +63,12 @@ public class TowerClass
     {
         get { return _range; }
         set { _range = value; }
+    }
+
+    public float ProjectileHeightOffset
+    {
+        get { return _projectileHeightOffset; }
+        set { _projectileHeightOffset = value; }
     }
 
 }

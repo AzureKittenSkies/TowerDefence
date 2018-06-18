@@ -12,6 +12,8 @@ namespace TowerDefence
 
         public NavMeshAgent agent;
         public CapsuleCollider baseCollider;
+        public EnemyClass enemyClass;
+        public Enemy enemyScript;
 
         [Header("Start and End Goals")]
         public Transform start, goal;
@@ -96,7 +98,7 @@ namespace TowerDefence
             
         void Start()
         {
-            rigid = GetComponent<Rigidbody>();
+            rigid = this.GetComponent<Rigidbody>();
             transform.LookAt(checkpoint[0]);
             for (int i = 0; i < checkpoint.Length; i++)
             {

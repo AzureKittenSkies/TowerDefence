@@ -2,53 +2,88 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Selector : MonoBehaviour
+
+namespace TowerDefence
 {
-    #region Variables
-
-    public bool isTileFree;
-    public LayerMask layerMask;
-    public GameManager gameManager;
-
-
-    public GameObject[] towerPrefabs;
-
-
-    #endregion
-
-
-
-    void Start()
+    public class Selector : MonoBehaviour
     {
-        gameManager = GameObject.Find("Main Camera").GetComponentInChildren<GameManager>();
-    }
+        #region Variables
+
+        public bool isTileFree;
+        public LayerMask layerMask;
+        public GameManager gameManager;
+
+        public GameObject curTower;
+
+        public GameObject[] towerPrefabs;
+        private GameObject[] instances;
+        private Transform tower;
+        private int currentTower;
 
 
 
+        #endregion
 
-    void CheckTileFree(bool isFree)
-    {
 
-        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(mouseRay, out hit, 1000f, layerMask, QueryTriggerInteraction.Ignore))
+
+        void Start()
         {
-            if (Input.GetMouseButtonDown(0))
+            gameManager = GameObject.Find("Main Camera").GetComponentInChildren<GameManager>();
+            towerPrefabs[0] = Resources.Load("Prefabs/Towers/Spear Tower/Spear Tower") as GameObject;
+            towerPrefabs[1] = Resources.Load("Prefabs/Towers/Archer Tower/Archer Tower") as GameObject;
+            towerPrefabs[2] = Resources.Load("Prefabs/Towers/Cannon Tower/Cannon Tower") as GameObject;
+
+        }
+
+
+
+        void CheckTileFree(bool isFree)
+        {
+
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(mouseRay, out hit, 1000f, layerMask, QueryTriggerInteraction.Ignore))
             {
-                Placeable p = hit.transform.GetComponent<Placeable>();
-
-                if (p && !p.isPlaced)
+                if (Input.GetMouseButtonDown(1))
                 {
-                    if (gameManager.archerSelected)
-                    {
+                    Placeable p = hit.transform.GetComponent<Placeable>();
 
+                    if (p && !p.isPlaced)
+                    {
+                        if (gameManager.spearSelected)
+                        {
+                            Debug.Log("Spawning a " + towerPrefabs[0].name);
+                            curTower = Instantiate(towerPrefabs[0], p.transform.position, Quaternion.identity);
+                            p.isPlaced = true;
+                        }
+                        else if (gameManager.archerSelected)
+                        {
+                            Debug.Log("Spawning a " + towerPrefabs[1].name);
+
+                            curTower = Instantiate(towerPrefabs[1], p.transform.position, Quaternion.identity);
+
+
+                            p.isPlaced = true;
+                        }
+                        else if (gameManager.cannonSelected)
+                        {
+                            Debug.Log("Spawning a " + towerPrefabs[2].name);
+
+                            curTower = Instantiate(towerPrefabs[2], p.transform.position, Quaternion.identity);
+
+                            p.isPlaced = true;
+                        }
                     }
+
+
+
+
                 }
 
 
 
-
             }
+
 
 
 
@@ -57,17 +92,13 @@ public class Selector : MonoBehaviour
 
 
 
+        // check if tile has anything placed on it
+        // if not, then allow tower placement
+        // place tower on tile
+
+
+
+
+
     }
-
-
-
-
-    // check if tile has anything placed on it
-    // if not, then allow tower placement
-    // place tower on tile
-
-
-
-
-
 }

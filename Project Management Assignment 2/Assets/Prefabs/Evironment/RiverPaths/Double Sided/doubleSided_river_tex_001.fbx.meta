@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 3bba4b5c1f6c9f24d950c62d3d0bddf5
-timeCreated: 1529283041
-licenseType: Pro
+guid: 372e78921e76dd048bdd0275382c7f9c
+timeCreated: 1529300199
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface13
+    4300000: doublesided_river
   materials:
     importMaterials: 1
     materialName: 0

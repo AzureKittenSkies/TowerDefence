@@ -32,7 +32,7 @@ public static class EnemyData
             case 2:
                 name = "Ship";
                 health = 225;
-                speed = 0.5f;
+                speed = 1f;
                 damage = 10;
                 type = EnemyType.Ship;
                 break;

@@ -26,33 +26,42 @@ namespace TowerDefence
 
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
             // get the tower type from the towerClass
             if (this.name == "Spear Tower")
             {
-                TowerData.CreateTower(0);
+                towerClass = TowerData.CreateTower(0);
             }
             else if (this.name == "Archer Tower")
             {
-                TowerData.CreateTower(1);
+                towerClass = TowerData.CreateTower(1);
 
             }
             else if (this.name == "Cannon Tower")
             {
-                TowerData.CreateTower(2);
+                towerClass = TowerData.CreateTower(2);
             }
+
+            damage = this.towerClass.Damage;
+            speed = this.towerClass.Speed;
+            range = this.towerClass.Range;
+
+            this.GetComponent<SphereCollider>().radius = range;
+
         }
 
         // Update is called once per frame
-        void LateUpdate()
+        void Update()
         {
             attackTimer += Time.deltaTime;
-            if (currentEnemy)
+            if (currentEnemy != null)
             {
+                Debug.Log("I am aiming at an enemy");
                 if (attackTimer > this.towerClass.Speed)
                 {
                     Attack(currentEnemy);
+                    Debug.Log("I have shot at an enemy");
                     attackTimer = 0f;
                 }
             }
@@ -60,7 +69,7 @@ namespace TowerDefence
 
         void OnTriggerEnter(Collider other)
         {
-            Enemy enemy = other.GetComponent<Enemy>();
+            Enemy enemy = other.GetComponentInParent<Enemy>();
             if (enemy != null && currentEnemy == null)
             {
                 currentEnemy = enemy;
@@ -73,6 +82,11 @@ namespace TowerDefence
             if (enemy != null && currentEnemy == enemy)
             {
 
+            }
+
+            if (other == enemy)
+            {
+                enemy = null;
             }
         }
 
@@ -89,14 +103,12 @@ namespace TowerDefence
             thisProjectile.transform.LookAt(enemyPos);
             thisProjectile.GetComponent<Rigidbody>().AddForce(projectileSpeed);
 
+            e.DealDamage(damage);
 
         }
 
 
-        public float DealDamage()
-        {
-            return this.towerClass.Damage;
-        }
+
 
 
     }

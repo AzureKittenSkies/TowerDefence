@@ -69,13 +69,19 @@ namespace TowerDefence
                 endTrigger = true;
             }
 
+            
             if (other.CompareTag("Projectile"))
             {
                 t = other.transform.parent.GetComponent<Tower>();
-                health -= t.DealDamage();
+                Destroy(other.gameObject);
             }
+            
         }
-
+        
+        public void DealDamage(float damage)
+        {
+            health -= damage;
+        }
 
 
     }

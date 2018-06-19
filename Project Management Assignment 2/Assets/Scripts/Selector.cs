@@ -48,13 +48,17 @@ namespace TowerDefence
                 {
                     Placeable p = hit.transform.GetComponent<Placeable>();
 
+
                     if (p && !p.isPlaced)
                     {
+                        p.GetComponentInChildren<Light>().enabled = true;
+
                         if (gameManager.spearSelected)
                         {
                             Debug.Log("Spawning a " + towerPrefabs[0].name);
                             curTower = Instantiate(towerPrefabs[0], p.transform.position, Quaternion.identity);
                             p.isPlaced = true;
+
                         }
                         else if (gameManager.archerSelected)
                         {
@@ -62,8 +66,8 @@ namespace TowerDefence
 
                             curTower = Instantiate(towerPrefabs[1], p.transform.position, Quaternion.identity);
 
-
                             p.isPlaced = true;
+
                         }
                         else if (gameManager.cannonSelected)
                         {
@@ -75,6 +79,7 @@ namespace TowerDefence
                         }
                     }
 
+                    p.GetComponentInChildren<Light>().enabled = false;
 
 
 

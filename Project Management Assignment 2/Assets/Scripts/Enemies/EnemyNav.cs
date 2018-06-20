@@ -126,10 +126,10 @@ namespace TowerDefence
 
         void OnTriggerEnter(Collider other)
         {
-            Debug.Log("I have hit something");
+            //Debug.Log("I have hit something");
             if (other.CompareTag("Checkpoint"))
             {
-                Debug.Log("It was a checkpoint");
+                //Debug.Log("It was a checkpoint");
                 if (checkpoint.Length >= checkpointIndex + 1)
                 {
                     checkpointIndex++;

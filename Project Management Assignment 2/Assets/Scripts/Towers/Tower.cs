@@ -29,17 +29,20 @@ namespace TowerDefence
         void Awake()
         {
             // get the tower type from the towerClass
-            if (this.name == "Spear Tower")
+            if (this.gameObject.name == "Spear Tower" || this.gameObject.name == "Spear Tower(Clone)")
             {
+                Debug.Log("Awake Spear Tower");
                 towerClass = TowerData.CreateTower(0);
             }
-            else if (this.name == "Archer Tower")
+            else if (this.gameObject.name == "Archer Tower" || this.gameObject.name == "Archer Tower(Clone)")
             {
+                Debug.Log("Awake Archer Tower");
                 towerClass = TowerData.CreateTower(1);
 
             }
-            else if (this.name == "Cannon Tower")
+            else if (this.gameObject.name == "Cannon Tower" || this.gameObject.name == "Cannon Tower(Clone)")
             {
+                Debug.Log("Awake Cannon Tower");
                 towerClass = TowerData.CreateTower(2);
             }
 
@@ -57,7 +60,7 @@ namespace TowerDefence
             attackTimer += Time.deltaTime;
             if (currentEnemy != null)
             {
-                Debug.Log("I am aiming at an enemy");
+                //Debug.Log("I am aiming at an enemy");
                 if (attackTimer > this.towerClass.Speed)
                 {
                     Attack(currentEnemy);
@@ -94,14 +97,14 @@ namespace TowerDefence
         {
             GameObject thisProjectile;
 
-            Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y + towerClass.ProjectileHeightOffset);
+            Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y + towerClass.ProjectileHeightOffset, this.transform.position.z);
             Vector3 enemyPos = e.transform.position;
             Vector3 projectileSpeed = new Vector3(0, 0, 5f);
 
             thisProjectile = Instantiate(towerClass.Projectile, startPos, Quaternion.identity, this.transform);
 
             thisProjectile.transform.LookAt(enemyPos);
-            thisProjectile.GetComponent<Rigidbody>().AddForce(projectileSpeed);
+            //this.projectile.transform.position = 
 
             e.DealDamage(damage);
 

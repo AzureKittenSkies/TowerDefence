@@ -7,7 +7,8 @@ public class BoatSpawner : MonoBehaviour
     public Transform enemySpawn;
     public GameObject[] boats;
 
-    public bool playing = false;
+    public bool playing = true;
+    public bool nextWave = false;
 
     // setting number of enemies spawned per wave
     // enemies: {small, medium, large}
@@ -24,7 +25,6 @@ public class BoatSpawner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         nextUse = Time.time + delay;
     }
 
@@ -33,28 +33,30 @@ public class BoatSpawner : MonoBehaviour
     {
         if (playing)
         {
-            if (Time.time / nextUse == 0)
+            nextUse += Time.deltaTime;
+            if (nextWave)
             {
                 int noToSpawn;
 
                 noToSpawn = (int)waveVectorSpawn[curWave].x;
                 for (int x = 0; x < noToSpawn; x++)
                 {
-                    Instantiate(boats[0], enemySpawn);
+                    Instantiate(boats[0], enemySpawn.transform.position, Quaternion.identity, enemySpawn);
                 }
 
                 noToSpawn = (int)waveVectorSpawn[curWave].y;
                 for (int y = 0; y < noToSpawn; y++)
                 {
-                    Instantiate(boats[1], enemySpawn);
+                    Instantiate(boats[1], enemySpawn.transform.position, Quaternion.identity, enemySpawn);
                 }
 
                 noToSpawn = (int)waveVectorSpawn[curWave].z;
                 for (int z = 0; z < noToSpawn; z++)
                 {
-                    Instantiate(boats[2], enemySpawn);
+                    Instantiate(boats[2], enemySpawn.transform.position, Quaternion.identity, enemySpawn);
                 }
 
+                nextWave = false;
 
             }
 

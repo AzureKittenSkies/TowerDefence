@@ -16,6 +16,8 @@ namespace TowerDefence
         public bool paused;
 
 
+        BoatSpawner boatSpawner;
+
 
         #endregion
 
@@ -40,6 +42,7 @@ namespace TowerDefence
             towerList.Add(TowerData.CreateTower(1));
             towerList.Add(TowerData.CreateTower(2));
             money = 100;
+            boatSpawner = GameObject.Find("Handler").GetComponent<BoatSpawner>();
         }
 
 
@@ -63,8 +66,11 @@ namespace TowerDefence
 
 
 
-                GUI.Box(new Rect(14 * scrW, 8 * scrH, 2f * scrW, 1f * scrH), "Lives Left: \n" + lives + "\n Money: \n" + money);
-
+                GUI.Box(new Rect(14 * scrW, 8 * scrH, 2f * scrW, 1f * scrH), "Lives Left: " + lives + "\n Money: " + money);
+                if (GUI.Button(new Rect(11.75f * scrW, 8 * scrH, 2f * scrW, 1f * scrH), "Next Wave"))
+                {
+                    boatSpawner.nextWave = true;
+                }
 
 
                 // Tower selection window
@@ -72,17 +78,20 @@ namespace TowerDefence
                 GUI.Box(new Rect(0, 0, 5.5f * scrW, 2.75f * scrH), "");
 
                 // Tower option buttons
-                if (GUI.Button(new Rect(0.1f * scrW, 0.1f * scrH, 1.6f * scrW, 1.5f * scrH), "Spear Tower"))
+                if (GUI.Button(new Rect(0.1f * scrW, 0.1f * scrH, 1.6f * scrW, 1.5f * scrH), "Spear Tower") && money >= TowerData.CreateTower(0).Cost)
                 {
                     spearSelected = true;
+                    money -= TowerData.CreateTower(0).Cost;
                 }
                 if (GUI.Button(new Rect(1.95f * scrW, 0.1f * scrH, 1.6f * scrW, 1.5f * scrH), "Archer Tower"))
                 {
                     archerSelected = true;
+                    money -= TowerData.CreateTower(1).Cost;
                 }
                 if (GUI.Button(new Rect(3.8f * scrW, 0.1f * scrH, 1.6f * scrW, 1.5f * scrH), "Cannon Tower"))
                 {
                     cannonSelected = true;
+                    money -= TowerData.CreateTower(2).Cost;
                 }
 
                 // Tower info boxes
@@ -95,6 +104,7 @@ namespace TowerDefence
                 {
                     paused = true;
                 }
+
 
 
             }

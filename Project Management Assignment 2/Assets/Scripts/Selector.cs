@@ -12,13 +12,14 @@ namespace TowerDefence
         public bool isTileFree;
         public LayerMask layerMask;
         public GameManager gameManager;
+        public Vector3 towerPos;
+        public float towerHeight;
 
-        public GameObject curTower;
+        public GameObject curTower = null;
 
         public GameObject[] towerPrefabs;
-        private GameObject[] instances;
-        private Transform tower;
-        private int currentTower;
+        private Placeable p = null;
+        private Light l = null;
 
 
 
@@ -35,75 +36,83 @@ namespace TowerDefence
 
         }
 
-
-
-        void CheckTileFree(bool isFree)
+        void Reset()
         {
-
+            p.isPlaced = true;
+            l.enabled = false;
+        }
+        void ClearCache()
+        {
+            p = null;
+            l = null;
+            curTower = null;
+        }
+        void Update()
+        {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(mouseRay, out hit, 1000f, layerMask, QueryTriggerInteraction.Ignore))
+
+            if (Input.GetMouseButtonDown(1))
             {
-                if (Input.GetMouseButtonDown(1))
+                if (Physics.Raycast(mouseRay, out hit, 1000f, layerMask, QueryTriggerInteraction.Ignore))
                 {
-                    Placeable p = hit.transform.GetComponent<Placeable>();
-
-
-                    if (p && !p.isPlaced)
+                    if (p != null && l != null)
                     {
-                        p.GetComponentInChildren<Light>().enabled = true;
-
-                        if (gameManager.spearSelected)
-                        {
-                            Debug.Log("Spawning a " + towerPrefabs[0].name);
-                            curTower = Instantiate(towerPrefabs[0], p.transform.position, Quaternion.identity);
-                            p.isPlaced = true;
-
-                        }
-                        else if (gameManager.archerSelected)
-                        {
-                            Debug.Log("Spawning a " + towerPrefabs[1].name);
-
-                            curTower = Instantiate(towerPrefabs[1], p.transform.position, Quaternion.identity);
-
-                            p.isPlaced = true;
-
-                        }
-                        else if (gameManager.cannonSelected)
-                        {
-                            Debug.Log("Spawning a " + towerPrefabs[2].name);
-
-                            curTower = Instantiate(towerPrefabs[2], p.transform.position, Quaternion.identity);
-
-                            p.isPlaced = true;
-                        }
+                        Reset();
                     }
 
-                    p.GetComponentInChildren<Light>().enabled = false;
+                    p = hit.transform.GetComponent<Placeable>();
+                    l = p.GetComponentInChildren<Light>(true);
+                    l.enabled = true;
 
 
+                }
+            }
+
+            if (p != null)
+            {
+
+                if (gameManager.spearSelected)
+                {
+                    curTower = towerPrefabs[0];
+                    towerHeight = 1.03f;
+                }
+                if (gameManager.archerSelected)
+                {
+                    curTower = towerPrefabs[1];
+                    towerHeight = 0.65f;
+
+                }
+                if (gameManager.cannonSelected)
+                {
+                    curTower = towerPrefabs[2];
+                    towerHeight = 1.13f;
 
                 }
 
 
+                if (gameManager.spearSelected || 
+                    gameManager.archerSelected || 
+                    gameManager.cannonSelected)
+                {
+                    
+                    Debug.Log("Spawning a " + curTower.name);
+                    towerPos = new Vector3(p.transform.position.x, towerHeight, p.transform.position.z);
+                    GameObject clone = Instantiate(curTower, towerPos, Quaternion.identity, GameObject.Find(curTower.name + "s").transform);
+                    clone.GetComponent<Tower>().enabled = true;
+                    // clone.name = curTower.name;
+                    l.enabled = false;
+                    gameManager.spearSelected = false;
+                    gameManager.archerSelected = false;
+                    gameManager.cannonSelected = false;
+                    ClearCache();
+                    
 
+                }
             }
-
-
-
-
         }
-
-
-
-
-        // check if tile has anything placed on it
-        // if not, then allow tower placement
-        // place tower on tile
-
-
-
-
-
     }
+    // check if tile has anything placed on it
+    // if not, then allow tower placement
+    // place tower on tile
 }

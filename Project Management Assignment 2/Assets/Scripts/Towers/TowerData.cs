@@ -15,6 +15,7 @@ namespace TowerDefence
             string icon = "";
             float range = 0;
             float projectileHeightOffset = 0;
+            float towerHeightOffset = 0;
 
             switch (towerId)
             {
@@ -27,6 +28,7 @@ namespace TowerDefence
                     icon = "Spear Tower";
                     range = 1.5f;
                     projectileHeightOffset = -0.039f;
+                    towerHeightOffset = 1.03f;
                     break;
                 case 1:
                     name = "Arrow Tower";
@@ -37,6 +39,7 @@ namespace TowerDefence
                     icon = "Arrow Tower";
                     range = 2.5f;
                     projectileHeightOffset = 0.495f;
+                    towerHeightOffset = 0.65f;
                     break;
                 case 2:
                     name = "Cannon Tower";
@@ -47,6 +50,7 @@ namespace TowerDefence
                     icon = "Cannon Tower";
                     range = 3.5f;
                     projectileHeightOffset = 0.186f;
+                    towerHeightOffset = 1.13f;
                     break;
 
             }
@@ -58,7 +62,8 @@ namespace TowerDefence
             tower.Projectile = Resources.Load("Prefabs/Projectiles/" + projectile + "/" + projectile) as GameObject;
             tower.Icon = Resources.Load("Sprites/Icons/" + icon) as Texture2D;
             tower.Range = range;
-
+            tower.ProjectileHeightOffset = projectileHeightOffset;
+            tower.TowerHeightOffset = towerHeightOffset;
             return tower;
         }
 

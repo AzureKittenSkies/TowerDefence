@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Placeable : MonoBehaviour
+namespace TowerDefence
 {
+    public class Placeable : MonoBehaviour
+    {
 
-    public bool isPlaced = false;
+        public bool isPlaced = false;
+    }
 }

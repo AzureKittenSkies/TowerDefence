@@ -15,6 +15,7 @@ namespace TowerDefence
         public float range;
         public GameObject projectile;
         public Texture2D icon;
+        public Vector3 enemyPos;
 
         private float attackTimer = 0;
 
@@ -99,15 +100,10 @@ namespace TowerDefence
 
             Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y + towerClass.ProjectileHeightOffset, this.transform.position.z);
             Vector3 enemyPos = e.transform.position;
-            Vector3 projectileSpeed = new Vector3(0, 0, 5f);
 
+        
             thisProjectile = Instantiate(towerClass.Projectile, startPos, Quaternion.identity, this.transform);
-
-            thisProjectile.transform.LookAt(enemyPos);
-            //this.projectile.transform.position = 
-
-            e.DealDamage(damage);
-
+            thisProjectile.GetComponent<ProjectileHandler>().TowardsEnemy(e, this);
         }
 
 

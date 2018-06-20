@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Killbox : MonoBehaviour
+namespace TowerDefence
 {
-
-
-    void OtherTriggerEnter(Collider other)
+    public class Killbox : MonoBehaviour
     {
-        Destroy(other.gameObject);
-        Debug.Log("Destroyed projectile");
+
+
+        void OtherTriggerEnter(Collider other)
+        {
+            Destroy(other.gameObject);
+            Debug.Log("Destroyed projectile");
+        }
+
+
+
     }
-
-
-
 }

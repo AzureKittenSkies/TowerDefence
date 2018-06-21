@@ -11,6 +11,7 @@ public static class EnemyData
         float speed = 0;
         int damage = 0;
         EnemyType type = EnemyType.Raft;
+        int reward = 0;
 
 
         switch (enemyId)
@@ -21,6 +22,7 @@ public static class EnemyData
                 speed = 3;
                 damage = 1;
                 type = EnemyType.Raft;
+                reward = 5;
                 break;
             case 1:
                 name = "Rowboat";
@@ -28,6 +30,7 @@ public static class EnemyData
                 speed = 1.75f;
                 damage = 5; 
                 type = EnemyType.Rowboat;
+                reward = 25;
                 break;
             case 2:
                 name = "Ship";
@@ -35,6 +38,7 @@ public static class EnemyData
                 speed = 1f;
                 damage = 10;
                 type = EnemyType.Ship;
+                reward = 75;
                 break;
 
         }
@@ -44,6 +48,7 @@ public static class EnemyData
         enemy.Speed = speed;
         enemy.Damage = damage;
         enemy.Type = type;
+        enemy.Reward = reward;
 
         return enemy;
     }

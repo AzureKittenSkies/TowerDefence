@@ -110,6 +110,7 @@ namespace TowerDefence
 
         
             thisProjectile = Instantiate(towerClass.Projectile, startPos, Quaternion.LookRotation(enemyPos, transform.up));
+            thisProjectile.GetComponent<ProjectileHandler>().parentTower = gameObject.GetComponent<Tower>();
             thisProjectile.GetComponent<ProjectileHandler>().TowardsEnemy(e, this);
         }
 

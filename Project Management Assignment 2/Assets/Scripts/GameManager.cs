@@ -11,12 +11,12 @@ namespace TowerDefence
         #region Variables
         [Header("Variables")]
         public int lives = 50;
-        private int money;
+        public int money;
         public bool spearSelected, archerSelected, cannonSelected;
         public bool paused;
 
 
-        BoatSpawner boatSpawner;
+        public BoatSpawner boatSpawner;
 
 
         #endregion
@@ -69,6 +69,7 @@ namespace TowerDefence
                 GUI.Box(new Rect(14 * scrW, 8 * scrH, 2f * scrW, 1f * scrH), "Lives Left: " + lives + "\n Money: " + money);
                 if (GUI.Button(new Rect(11.75f * scrW, 8 * scrH, 2f * scrW, 1f * scrH), "Next Wave"))
                 {
+                    Debug.Log("Next Wave incoming");
                     boatSpawner.nextWave = true;
                 }
 

@@ -16,6 +16,7 @@ namespace TowerDefence
             float range = 0;
             Vector3 projectileHeightOffset = new Vector3(0,0,0);
             Vector3 towerHeightOffset = new Vector3(0, 0, 0);
+            float projectileSpeed = 0;
 
             switch (towerId)
             {
@@ -29,6 +30,7 @@ namespace TowerDefence
                     range = 1.5f;
                     projectileHeightOffset = new Vector3(0, -0.039f, 0);
                     towerHeightOffset = new Vector3(0, 1.03f, 0);
+                    projectileSpeed = 8.5f;
                     break;
                 case 1:
                     name = "Arrow Tower";
@@ -40,6 +42,7 @@ namespace TowerDefence
                     range = 2.5f;
                     projectileHeightOffset = new Vector3(0, 0.495f, 0);
                     towerHeightOffset = new Vector3(0, 0.65f, 0);
+                    projectileSpeed = 5.5f;
                     break;
                 case 2:
                     name = "Cannon Tower";
@@ -51,6 +54,7 @@ namespace TowerDefence
                     range = 3.5f;
                     projectileHeightOffset = new Vector3(0, 0.186f, 0);
                     towerHeightOffset = new Vector3(0, 1.13f, 0);
+                    projectileSpeed = 2.5f;
                     break;
 
             }
@@ -64,6 +68,7 @@ namespace TowerDefence
             tower.Range = range;
             tower.ProjectileHeightOffset = projectileHeightOffset;
             tower.TowerHeightOffset = towerHeightOffset;
+            tower.ProjectileSpeed = projectileSpeed;
             return tower;
         }
 

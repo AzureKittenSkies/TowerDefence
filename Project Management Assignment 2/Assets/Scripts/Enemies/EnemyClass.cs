@@ -11,6 +11,7 @@ public class EnemyClass
     private float _speed;
     private int _damage;
     private EnemyType _type;
+    private int _reward;
 
     #endregion
 
@@ -48,8 +49,14 @@ public class EnemyClass
     {
         get { return _type; }
         set { _type = value; }
-}
-    
+    }
+
+    public int Reward
+    {
+        get { return _reward; }
+        set { _reward = value; }
+    }
+
 }
 
 public enum EnemyType

@@ -12,11 +12,15 @@ namespace TowerDefence
         public Enemy targetEnemy;
         public Tower parentTower;
 
+        public float damage;
+        public float speed;
+
 
         private void Start()
         {
-            parentTower = GetComponentInParent<Tower>();
+            //parentTower = GetComponentInParent<Tower>();
             //enemyPosition = parentTower.enemyPos;
+            this.gameObject.transform.position += parentTower.towerClass.ProjectileHeightOffset;
 
         }
 
@@ -37,11 +41,15 @@ namespace TowerDefence
 
         public void TowardsEnemy(Enemy target, Tower pTower)
         {
+            float calcSpeed = pTower.towerClass.ProjectileSpeed * Time.deltaTime;
+            damage = pTower.damage;
+
             targetEnemy = target;
             parentTower = pTower;
-            this.gameObject.transform.position = pTower.transform.position ;
-            this.gameObject.transform.LookAt(target.gameObject.transform);
-            this.gameObject.transform.Translate(transform.forward * 2.5f);
+            targetEnemyTransform = target.gameObject.transform;
+            //this.gameObject.transform.position = pTower.transform.position ;
+            this.gameObject.transform.LookAt(targetEnemyTransform);
+            this.gameObject.transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, calcSpeed);
 
         }
 

@@ -27,16 +27,19 @@ namespace TowerDefence
         void Awake()
         {
             gameManager = GameObject.Find("Main Camera").GetComponentInChildren<GameManager>();
-            if (this.name == "Raft")
+            if (this.name == "Raft" || this.name == "Raft(Clone)")
             {
+                this.name = "Raft";
                 enemyClass = EnemyData.CreateEnemy(0);
             }
-            if (this.name == "Rowboat")
+            if (this.name == "Rowboat" || this.name == "Rowboat(Clone)")
             {
+                this.name = "Rowboat";
                 enemyClass = EnemyData.CreateEnemy(1);
             }
-            if (this.name == "Ship")
+            if (this.name == "Ship" || this.name == "Ship(Clone)")
             {
+                this.name = "Ship";
                 enemyClass = EnemyData.CreateEnemy(2);
             }
             this.gameObject.name = this.enemyClass.Name;
@@ -54,6 +57,7 @@ namespace TowerDefence
         {
             if (health <= 0 || endTrigger)
             {
+                gameManager.money += this.enemyClass.Reward;
                 Destroy(this.gameObject);
             }
 
@@ -71,6 +75,7 @@ namespace TowerDefence
             
             if (other.CompareTag("Projectile"))
             {
+                DealDamage(other.gameObject.GetComponent<ProjectileHandler>().damage);
                 Destroy(other.gameObject);
             }
             

@@ -15,6 +15,7 @@ public class TowerClass
     private float _range;
     private Vector3 _projectileHeightOffset;
     private Vector3 _towerHeightOffset;
+    private float _projectileSpeed;
 
     #endregion
 
@@ -78,4 +79,9 @@ public class TowerClass
         set { _towerHeightOffset = value; }
     }
 
+    public float ProjectileSpeed
+    {
+        get { return _projectileSpeed; }
+        set { _projectileSpeed = value; }
+    }
 }

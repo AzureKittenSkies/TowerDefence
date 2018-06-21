@@ -43,6 +43,7 @@ namespace TowerDefence
                 enemyClass = EnemyData.CreateEnemy(2);
             }
             this.gameObject.name = this.enemyClass.Name;
+            enemyNavScript = this.GetComponent<EnemyNav>();
             Debug.Log("I am a " + this.name);
             health = this.enemyClass.Health;
             speed = this.enemyClass.Speed;

@@ -23,7 +23,7 @@ namespace TowerDefence
                 case 0:
                     name = "Spear Tower";
                     cost = 10;
-                    speed = 5;
+                    speed = 1;
                     damage = 7.5f;
                     projectile = "Spears";
                     icon = "Spear Tower";
@@ -47,7 +47,7 @@ namespace TowerDefence
                 case 2:
                     name = "Cannon Tower";
                     cost = 25;
-                    speed = 1;
+                    speed = 5;
                     damage = 20;
                     projectile = "Cannon Ball";
                     icon = "Cannon Tower";

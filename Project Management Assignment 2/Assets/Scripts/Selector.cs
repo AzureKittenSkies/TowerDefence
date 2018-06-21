@@ -69,7 +69,7 @@ namespace TowerDefence
                 }
             }
 
-            if (p != null)
+            if (p != null && !p.isPlaced)
             {
 
                 if (gameManager.spearSelected)
@@ -100,6 +100,7 @@ namespace TowerDefence
                     towerPos = new Vector3(p.transform.position.x, towerHeight, p.transform.position.z);
                     GameObject clone = Instantiate(curTower, towerPos, Quaternion.identity, GameObject.Find(curTower.name + "s").transform);
                     clone.GetComponent<Tower>().enabled = true;
+                    p.isPlaced = true;
                     // clone.name = curTower.name;
                     l.enabled = false;
                     gameManager.spearSelected = false;

@@ -14,8 +14,8 @@ namespace TowerDefence
             string projectile = "";
             string icon = "";
             float range = 0;
-            float projectileHeightOffset = 0;
-            float towerHeightOffset = 0;
+            Vector3 projectileHeightOffset = new Vector3(0,0,0);
+            Vector3 towerHeightOffset = new Vector3(0, 0, 0);
 
             switch (towerId)
             {
@@ -27,8 +27,8 @@ namespace TowerDefence
                     projectile = "Spears";
                     icon = "Spear Tower";
                     range = 1.5f;
-                    projectileHeightOffset = -0.039f;
-                    towerHeightOffset = 1.03f;
+                    projectileHeightOffset = new Vector3(0, -0.039f, 0);
+                    towerHeightOffset = new Vector3(0, 1.03f, 0);
                     break;
                 case 1:
                     name = "Arrow Tower";
@@ -38,8 +38,8 @@ namespace TowerDefence
                     projectile = "Arrow Cluster";
                     icon = "Arrow Tower";
                     range = 2.5f;
-                    projectileHeightOffset = 0.495f;
-                    towerHeightOffset = 0.65f;
+                    projectileHeightOffset = new Vector3(0, 0.495f, 0);
+                    towerHeightOffset = new Vector3(0, 0.65f, 0);
                     break;
                 case 2:
                     name = "Cannon Tower";
@@ -49,8 +49,8 @@ namespace TowerDefence
                     projectile = "Cannon Ball";
                     icon = "Cannon Tower";
                     range = 3.5f;
-                    projectileHeightOffset = 0.186f;
-                    towerHeightOffset = 1.13f;
+                    projectileHeightOffset = new Vector3(0, 0.186f, 0);
+                    towerHeightOffset = new Vector3(0, 1.13f, 0);
                     break;
 
             }

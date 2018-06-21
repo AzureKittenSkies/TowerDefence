@@ -21,6 +21,8 @@ namespace TowerDefence
 
         protected Enemy currentEnemy;
 
+        Vector3 projectileHeight;
+
 
         #endregion
 
@@ -80,29 +82,34 @@ namespace TowerDefence
             }
         }
 
+        void OnTriggerStay(Collider other)
+        {
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null && currentEnemy == null)
+            {
+                currentEnemy = enemy;
+            }
+        }
+
         void OnTriggerExit(Collider other)
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null && currentEnemy == enemy)
             {
-
-            }
-
-            if (other == enemy)
-            {
-                enemy = null;
+                currentEnemy = null;
             }
         }
 
         public void Attack(Enemy e)
         {
             GameObject thisProjectile;
+            
 
-            Vector3 startPos = new Vector3(this.transform.position.x, this.transform.position.y + towerClass.ProjectileHeightOffset, this.transform.position.z);
+            Vector3 startPos = this.transform.position + projectileHeight;
             Vector3 enemyPos = e.transform.position;
 
         
-            thisProjectile = Instantiate(towerClass.Projectile, startPos, Quaternion.identity, this.transform);
+            thisProjectile = Instantiate(towerClass.Projectile, startPos, Quaternion.LookRotation(enemyPos, transform.up));
             thisProjectile.GetComponent<ProjectileHandler>().TowardsEnemy(e, this);
         }
 

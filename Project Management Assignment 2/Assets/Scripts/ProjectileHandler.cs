@@ -16,7 +16,7 @@ namespace TowerDefence
         private void Start()
         {
             parentTower = GetComponentInParent<Tower>();
-            enemyPosition = parentTower.enemyPos;
+            //enemyPosition = parentTower.enemyPos;
 
         }
 
@@ -39,8 +39,9 @@ namespace TowerDefence
         {
             targetEnemy = target;
             parentTower = pTower;
+            this.gameObject.transform.position = pTower.transform.position ;
             this.gameObject.transform.LookAt(target.gameObject.transform);
-            this.gameObject.transform.Translate(0, 0, 2.5f);
+            this.gameObject.transform.Translate(transform.forward * 2.5f);
 
         }
 
@@ -48,7 +49,7 @@ namespace TowerDefence
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                other.GetComponent<Enemy>().health -= parentTower.damage;
+                other.GetComponent<Enemy>().DealDamage(parentTower.damage);
                 Destroy(this.gameObject);
             }
         }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 82decce371e47ed4b944bfe0c7b04e68
-timeCreated: 1528847590
+guid: 0a7503857132e3748824e9c8ecf190d6
+timeCreated: 1529542901
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: cannon_tower
+    4300000: arrow_cluster
   materials:
     importMaterials: 1
     materialName: 0

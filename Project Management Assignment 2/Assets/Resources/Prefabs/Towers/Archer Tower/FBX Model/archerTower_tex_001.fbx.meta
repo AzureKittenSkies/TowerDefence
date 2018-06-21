@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 3f7a698f595645540b2e6941087cbd1a
-timeCreated: 1527480055
-licenseType: Free
+guid: 420b4700d28ec9b46a85c7fb32d779b8
+timeCreated: 1529542665
+licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: arrow_cluster
+    4300000: archer_tower
   materials:
     importMaterials: 1
     materialName: 0

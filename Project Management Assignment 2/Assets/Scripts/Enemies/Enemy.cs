@@ -20,7 +20,6 @@ namespace TowerDefence
 
         public EnemyNav enemyNavScript;
 
-        public Tower t;
 
         #endregion
 
@@ -72,7 +71,6 @@ namespace TowerDefence
             
             if (other.CompareTag("Projectile"))
             {
-                t = other.transform.parent.GetComponent<Tower>();
                 Destroy(other.gameObject);
             }
             

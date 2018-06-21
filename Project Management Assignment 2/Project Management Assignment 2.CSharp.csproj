@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Goal.cs" />
     <Compile Include="Assets\Scripts\Killbox.cs" />
     <Compile Include="Assets\Scripts\Placeable.cs" />
+    <Compile Include="Assets\Scripts\ProjectileHandler.cs" />
     <Compile Include="Assets\Scripts\Selector.cs" />
     <Compile Include="Assets\Scripts\Towers\Tower.cs" />
     <Compile Include="Assets\Scripts\Towers\TowerClass.cs" />

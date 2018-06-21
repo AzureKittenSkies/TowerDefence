@@ -13,8 +13,8 @@ public class TowerClass
     private GameObject _projectile;
     private Texture2D _icon;
     private float _range;
-    private float _projectileHeightOffset;
-    private float _towerHeightOffset;
+    private Vector3 _projectileHeightOffset;
+    private Vector3 _towerHeightOffset;
 
     #endregion
 
@@ -66,13 +66,13 @@ public class TowerClass
         set { _range = value; }
     }
 
-    public float ProjectileHeightOffset
+    public Vector3 ProjectileHeightOffset
     {
         get { return _projectileHeightOffset; }
         set { _projectileHeightOffset = value; }
     }
 
-    public float TowerHeightOffset
+    public Vector3 TowerHeightOffset
     {
         get { return _towerHeightOffset; }
         set { _towerHeightOffset = value; }

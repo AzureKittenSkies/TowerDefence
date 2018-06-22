@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1eaaf6b87b6dcad4c82b61e01ed4c934
-timeCreated: 1529495484
+guid: 09034a898f86a2b4d93f6d689b4f4fce
+timeCreated: 1529644202
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -35,10 +35,13 @@ ModelImporter:
     400024: mast
     400026: raft
     400028: //RootNode
-    4300000: raft
+    2300000: raft
+    3300000: raft
+    4300000: mast
+    4300002: raft
     7400000: Take 001
     9500000: //RootNode
-    13700000: raft
+    13700000: mast
   materials:
     importMaterials: 1
     materialName: 0

@@ -21,7 +21,7 @@ namespace TowerDefence
         public Vector3[] waveVectorSpawn;
 
         int curNum;
-        float delay = 7.5f;
+        public float delay = 7.5f;
         float nextUse;
         int curWave = 0;
 
@@ -32,7 +32,6 @@ namespace TowerDefence
                 new Vector3(3, 3, 0), new Vector3(3, 0, 1), new Vector3(5, 5, 1), new Vector3(7, 3, 3), new Vector3(7, 5, 5),
                 new Vector3(10, 7, 7), new Vector3(15, 5, 5), new Vector3(25, 0, 0), new Vector3(13, 7, 5), new Vector3(17, 12, 7)};
             enemyParent = GameObject.Find("Enemies");
-            nextUse = Time.time + delay;
         }
 
         // Update is called once per frame
@@ -41,7 +40,7 @@ namespace TowerDefence
             if (playing)
             {
                 nextUse += Time.deltaTime;
-                if (nextWave && nextUse >= 5)
+                if (nextWave && nextUse >= delay)
                 {
                     int noToSpawn;
 

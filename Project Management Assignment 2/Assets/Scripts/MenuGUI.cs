@@ -11,7 +11,7 @@ public class MenuGUI : MonoBehaviour
     public Font font;
     public GUIStyle title;
     public GUIStyle buttons;
-
+    public GUIStyle background;
 
 
     #endregion
@@ -23,7 +23,7 @@ public class MenuGUI : MonoBehaviour
 
 
 
-        GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+        GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "", background);
 
         GUI.Box(new Rect(2f * scrW, 0.25f * scrH, 12 * scrW, 4.25f * scrH), "Picaroon Prevention", title);
 

@@ -56,7 +56,7 @@ namespace TowerDefence
 
         void LateUpdate()
         {
-            if (health <= 0 || endTrigger)
+            if (health <= 0 && !endTrigger)
             {
                 gameManager.money += this.enemyClass.Reward;
                 Destroy(this.gameObject);

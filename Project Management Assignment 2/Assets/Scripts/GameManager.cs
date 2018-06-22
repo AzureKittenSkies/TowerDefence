@@ -33,6 +33,7 @@ namespace TowerDefence
         public GUIStyle archerTowerSelection;
         public GUIStyle cannonTowerSelction;
         public GUIStyle pauseButton;
+        public GUIStyle towerSelectionBox;
         #endregion
 
 
@@ -66,8 +67,8 @@ namespace TowerDefence
 
 
 
-                GUI.Box(new Rect(14 * scrW, 8 * scrH, 2f * scrW, 1f * scrH), "Lives Left: " + lives + "\n Money: " + money);
-                if (GUI.Button(new Rect(11.75f * scrW, 8 * scrH, 2f * scrW, 1f * scrH), "Next Wave"))
+                GUI.Box(new Rect(14 * scrW, 8 * scrH, 2f * scrW, 1f * scrH), "Lives Left: " + lives + "\n Money: " + money, livesBox);
+                if (GUI.Button(new Rect(11.75f * scrW, 8 * scrH, 2f * scrW, 1f * scrH), "Next Wave", livesBox))
                 {
                     Debug.Log("Next Wave incoming");
                     boatSpawner.nextWave = true;
@@ -96,9 +97,9 @@ namespace TowerDefence
                 }
 
                 // Tower info boxes
-                GUI.Box(new Rect(0.1f * scrW, 1.75f * scrH, 1.6f * scrW, 0.9f * scrH), "Cost; " + towerList[0].Cost + "\nDamage; " + towerList[0].Damage + "\nRange; " + towerList[0].Range);
-                GUI.Box(new Rect(1.95f * scrW, 1.75f * scrH, 1.6f * scrW, 0.9f * scrH), "Cost; " + towerList[1].Cost + "\nDamage; " + towerList[1].Damage + "\nRange; " + towerList[1].Range);
-                GUI.Box(new Rect(3.8f * scrW, 1.75f * scrH, 1.6f * scrW, 0.9f * scrH), "Cost; " + towerList[2].Cost + "\nDamage; " + towerList[2].Damage + "\nRange; " + towerList[2].Range);
+                GUI.Box(new Rect(0.1f * scrW, 1.75f * scrH, 1.6f * scrW, 0.9f * scrH), "Cost; " + towerList[0].Cost + "\nDamage; " + towerList[0].Damage + "\nRange; " + towerList[0].Range, towerInfoBoxes);
+                GUI.Box(new Rect(1.95f * scrW, 1.75f * scrH, 1.6f * scrW, 0.9f * scrH), "Cost; " + towerList[1].Cost + "\nDamage; " + towerList[1].Damage + "\nRange; " + towerList[1].Range, towerInfoBoxes);
+                GUI.Box(new Rect(3.8f * scrW, 1.75f * scrH, 1.6f * scrW, 0.9f * scrH), "Cost; " + towerList[2].Cost + "\nDamage; " + towerList[2].Damage + "\nRange; " + towerList[2].Range, towerInfoBoxes );
 
                 // Pause Button
                 if (GUI.Button(new Rect(13.9f * scrW, 0.1f * scrH, 2 * scrW, scrH), "Pause Menu", pauseButton))

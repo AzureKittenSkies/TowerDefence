@@ -28,8 +28,9 @@ namespace TowerDefence
         // Use this for initialization
         void Start()
         {
-            waveVectorSpawn = new[] { new Vector3 ( 1, 0, 0 ), new Vector3 ( 3, 0, 0 ), new Vector3 ( 0, 1, 0 ),  new Vector3 ( 2, 1, 0 ),
-        new Vector3 ( 3, 3, 0 ), new Vector3 ( 3, 0, 1 ),  new Vector3 (5, 5, 1 ) };
+            waveVectorSpawn = new[] { new Vector3(1, 0, 0), new Vector3(3, 0, 0), new Vector3(0, 1, 0), new Vector3(2, 1, 0),
+                new Vector3(3, 3, 0), new Vector3(3, 0, 1), new Vector3(5, 5, 1), new Vector3(7, 3, 3), new Vector3(7, 5, 5),
+                new Vector3(10, 7, 7), new Vector3(15, 5, 5), new Vector3(25, 0, 0), new Vector3(13, 7, 5), new Vector3(17, 12, 7)};
             enemyParent = GameObject.Find("Enemies");
             nextUse = Time.time + delay;
         }
@@ -50,7 +51,7 @@ namespace TowerDefence
                         Debug.Log("Spawning a raft");
                         Instantiate(boats[0], (Random.insideUnitSphere * 3) + enemySpawn.transform.position, Quaternion.identity, enemyParent.transform);
                     }
-                    
+
                     noToSpawn = (int)waveVectorSpawn[curWave].y;
                     for (int y = 0; y < noToSpawn; y++)
                     {
